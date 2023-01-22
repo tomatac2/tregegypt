@@ -55,6 +55,9 @@ return [
         'dir' => 'src',
         'webroot' => 'webroot',
         'wwwRoot' => WWW_ROOT,
+        ///////////////////////////~~~~~~~~~~~~~~~~~~~~~~~~
+        'uploadedFilesAsObjects' => false,  //to disabled error lamains
+        ///////////////////////////~~~~~~~~~~~~~~~~~~~~~~~~
         //'baseUrl' => env('SCRIPT_NAME'),
         'fullBaseUrl' => false,
         'imageBaseUrl' => 'img/',

@@ -2,7 +2,10 @@
 declare(strict_types=1);
 
 namespace App\Controller;
-
+use App\Hellpers\Error;
+use App\Hellpers\GeneralActions;
+use App\Hellpers\Fields;
+ 
 /**
  * Agents Controller
  *
@@ -19,6 +22,9 @@ class AgentsController extends AppController
     public function index()
     {
         $this->viewBuilder()->setLayout('dashboard');
+
+        $this->paginate = ['page' => $_GET['page'],'limit' =>10,'maxLimit' => 100  , "order"=>["Agents.id"=>'DESC']];
+
         $agents = $this->paginate($this->Agents);
 
         $this->set(compact('agents'));
@@ -51,15 +57,23 @@ class AgentsController extends AppController
     {
         $this->viewBuilder()->setLayout('dashboard');
 
-        $agent = $this->Agents->newEmptyEntity();
+        $req = $this->request->getData();
+        $param=[
+            "table_name"=>"Agents",
+            "msg"=>"الموزعين",
+            "fields"=> [  "name"=>$req["name"],  "title"=>$req["title"],  "area"=>$req["area"],  "address"=>$req["address"],  "mobile"=>$req["mobile"],  "photo"=>$req["photo"], ] ,
+            "validate_name"=> "create",
+            "file"=>["name"=>"photo" , "path"=>"library/agents"]
+        ];
+     
         if ($this->request->is('post')) {
-            $agent = $this->Agents->patchEntity($agent, $this->request->getData());
-            if ($this->Agents->save($agent)) {
+            $query = GeneralActions::create($param);
+             if ($query["success"] == true) {
                 $this->Flash->success(__('تم الحفظ بنجاح'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('برجاء ادخال كل البيانات '));
+            $this->Flash->error(__(Error::errorMsg($query["msg"])));
         }
         $this->set(compact('agent'));
     }
@@ -74,18 +88,32 @@ class AgentsController extends AppController
     public function edit($id = null)
     {
         $this->viewBuilder()->setLayout('dashboard');
-
         $agent = $this->Agents->get($id, [
             'contain' => [],
         ]);
+
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $agent = $this->Agents->patchEntity($agent, $this->request->getData());
-            if ($this->Agents->save($agent)) {
+            $req = $this->request->getData();
+            $fields= Fields::getUpdateFields($req);
+            $fields["id"] = $id ? $id : 0 ; 
+             $_FILES["photo"] ? $fields["photo"]= $_FILES["photo"] : "";
+            if(empty($_FILES["photo"]["name"])) unset($fields["photo"]);
+            $param=[
+                "table_name"=>"Agents",
+                "msg"=>"الموزعين",
+                "fields"=> $fields , 
+                "validate_name"=> "update",
+                "file"=>["name"=>"photo" , "path"=>"library/agents"]
+            ];
+    
+        //  echo json_encode( ($fields));exit;
+            $query = GeneralActions::update($param);
+            if ($query["success"]== true) {
                 $this->Flash->success(__('تم التحديث بنجاح'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('برجاء ادخال كل البيانات '));
+            $this->Flash->error(__(Error::errorMsg($query["msg"])));
         }
         $this->set(compact('agent'));
     }

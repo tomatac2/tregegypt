@@ -86,4 +86,30 @@ class AgentsTable extends Table
 
         return $validator;
     }
+
+
+    public function validationUpdate($validator) {
+        $validator
+        ->notEmpty('name', 'ادخل اسم الموزع',['mode'=>'update']) 
+        ->notEmpty('title', 'ادخل تخصص الموزع',['mode'=>'update']) 
+        ->notEmpty('area', 'ادخل المحافظة',['mode'=>'update']) 
+        ->notEmpty('address', 'ادخل العنوان',['mode'=>'update']) 
+        ->notEmpty('mobile', 'ادخل رقم الهاتف',['mode'=>'update']) 
+        ->notEmpty('photo', 'ادخل الصورة',['mode'=>'update']) ; 
+    
+        return $validator;
+    }
+    ////////custom validations 
+    public function validationCreate($validator) {
+        $validator
+        ->notEmpty('name', 'ادخل اسم الموزع') 
+        ->notEmpty('title', 'ادخل تخصص الموزع') 
+        ->notEmpty('area', 'ادخل المحافظة') 
+        ->notEmpty('address', 'ادخل العنوان') 
+        ->notEmpty('mobile', 'ادخل رقم الهاتف') 
+        ->notEmpty('photo', 'ادخل الصورة') ; 
+    
+        return $validator;
+    }
+
 }

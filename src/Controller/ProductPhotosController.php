@@ -100,11 +100,11 @@ class ProductPhotosController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $productPhoto = $this->ProductPhotos->get($id);
         if ($this->ProductPhotos->delete($productPhoto)) {
-            $this->Flash->success(__('The product photo has been deleted.'));
+            $this->Flash->success(__('تم الحذف بنجاح'));
         } else {
-            $this->Flash->error(__('The product photo could not be deleted. Please, try again.'));
+            $this->Flash->error(__('لم يتم الحذف'));
         }
 
-        return $this->redirect(['action' => 'index']);
+        return $this->redirect(['controller'=>'Products','action' => 'view' , $productPhoto["product_id"]]);
     }
 }

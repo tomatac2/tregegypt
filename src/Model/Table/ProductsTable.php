@@ -71,4 +71,22 @@ class ProductsTable extends Table
 
         return $validator;
     }
+
+
+    
+    public function validationUpdate($validator) {
+        $validator
+        ->notEmpty('name', 'ادخل اسم المنتج',['mode'=>'update'])
+        ->notEmpty('photo', 'ادخل الصورة',['mode'=>'update']) ; 
+    
+        return $validator;
+    }
+    ////////custom validations 
+    public function validationCreate($validator) {
+        $validator
+        ->notEmpty('name', 'ادخل اسم المنتج')  
+        ->notEmpty('photo', 'ادخل الصورة') ; 
+    
+        return $validator;
+    }
 }

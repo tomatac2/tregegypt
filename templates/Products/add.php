@@ -1,28 +1,29 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var \App\Model\Entity\Product $product
+ * @var \App\Model\Entity\Category $category
  */
 ?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('List Products'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-        </div>
+<div class="row card card-margin ">
+<div class="column-responsive column-80 card-body ">
+
+    <aside class="column card-header">
+        <div class="col-sm-6"><legend><?= __('إضافة منتج جديد') ?></legend></div>
+        <div class="col-sm-6"><?= $this->Html->link(__('المنتجات'), ['action' => 'index'],['class' => ' button float-left btn btn-rounded btn-outline-primary mt-1 mr-1    card-toolbar side-nav-item' ]) ?></div>
     </aside>
-    <div class="column-responsive column-80">
-        <div class="products form content">
-            <?= $this->Form->create($product) ?>
+
+    <div class="card-bod" style="margin-top:25px;">
+        <div class="categories form content">
+            <?= $this->Form->create($product,["type"=>'file']) ?>
             <fieldset>
-                <legend><?= __('Add Product') ?></legend>
                 <?php
-                    echo $this->Form->control('name');
-                    echo $this->Form->control('mobile', ['empty' => true]);
+                    echo $this->Form->control('اسم المنتج',["name"=>"name",'class'=>"form-control"]); echo '<br>';
+                    echo $this->Form->control('صور المنتج',["name"=>"photo[]","multiple"=>"multiple","type"=>'file','class'=>"form-control"]);echo '<br>';
                 ?>
-            </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
+            </fieldset>  <br>
+            <?= $this->Form->button(__('حفظ'),['class'=>'btn btn-primary mr-2']) ?>
             <?= $this->Form->end() ?>
         </div>
     </div>
+</div>
 </div>

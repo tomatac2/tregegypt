@@ -29,7 +29,7 @@ class Product extends Entity
     protected $_accessible = [
         'name' => true,
         'created' => true,
-        'mobile' => true,
+        'modified' => true,
         'product_photos' => true,
     ];
 }

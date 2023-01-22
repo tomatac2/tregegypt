@@ -1,33 +1,34 @@
 <div class="row">
     <div class="column-responsive column-80">
-        <div class="articles view content">
-            <h3><?= h($article->id) ?></h3>
+        <div class="  ">
             <table>
-                <tr>
-                    <th><?= __('اسم الموزع') ?></th>
-                    <td class="form-control"><?= $article->category->name ?></td>
+                <tr >
+                    <td><?= __('اسم الموزع') ?></td>
+                    <td><?= $agent->name ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('التخصص') ?></th>
-                    <td class="form-control"><?= h($article->subject) ?></td>
+                    <td ><?= __('التخصص') ?></td>
+                    <td ><?= h($agent->title) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('المحافظة') ?></th>
-                    <td class="form-control"><?= h($article->subject) ?></td>
+                    <td ><?= __('المحافظة') ?></td>
+                    <td ><?= h($agent->area) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('العنوان') ?></th>
-                    <td class="form-control"><?= h($article->subject) ?></td>
+                    <td ><?= __('العنوان') ?></td>
+                    <td ><?= h($agent->address) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('الهاتف') ?></th>
-                    <td class="form-control"><?= h($article->subject) ?></td>
+                    <td ><?= __('الهاتف') ?></td>
+                    <td ><?= h($agent->mobile) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('الصورة') ?></th>
-                    <td class="form-control"><img src="<?= URL.h($article->photo) ?>" style="width:100px;height:60px;min-width:100px;min-height:60px" ></td>
-
+                    <td ><?= __('الصورة') ?></td>
+                    <td ><img src="<?= URL.h($agent->photo) ?>" style="widtd:100px;height:60px;min-widtd:100px;min-height:60px" ></td>
                 </tr>
+        </table>
         </div>
     </div>
 </div>
+
+

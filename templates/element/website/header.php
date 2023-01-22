@@ -101,6 +101,13 @@
 
 
   <style>
+
+    @font-face { font-family: 'NotoKufiArabic'; 
+			 src: url('<?=URL?>font/NotoKufiArabic-VariableFont_wght.ttf'); } 
+
+       body , h1 , h3 , h2 , h4 , h5 , h6 , p  , a {
+        font-family: 'NotoKufiArabic' !important ;
+       }
     .mobile-nav-toggle {
       right: auto;
        left: 20px;

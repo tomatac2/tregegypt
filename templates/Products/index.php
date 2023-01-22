@@ -4,18 +4,24 @@
  * @var iterable<\App\Model\Entity\Product> $products
  */
 ?>
-<div class="products index content">
-    <?= $this->Html->link(__('New Product'), ['action' => 'add'], ['class' => 'button float-right']) ?>
-    <h3><?= __('Products') ?></h3>
+<div class="categories index content  row card-margin">
+<div class="col-sm-12">
+<div class="card">
+
+    <div class="card-header">
+        <h3 class="float-right mt-1 mr-1 card-toolbar side-nav-item"><?= __('المنتجات') ?></h3>
+        <?= $this->Html->link(__('اضافة منتج'), ['action' => 'add'], ['class' => 'button float-right  btn btn-rounded btn-outline-primary  button ']) ?>
+    </div>
+
     <div class="table-responsive">
-        <table>
+        <table class="table widget-8">
             <thead>
                 <tr>
-                    <th><?= $this->Paginator->sort('id') ?></th>
-                    <th><?= $this->Paginator->sort('name') ?></th>
-                    <th><?= $this->Paginator->sort('created') ?></th>
-                    <th><?= $this->Paginator->sort('mobile') ?></th>
-                    <th class="actions"><?= __('Actions') ?></th>
+                    <th><?= $this->Paginator->sort('الرقم') ?></th>
+                    <th><?= $this->Paginator->sort('الاسم') ?></th>
+                    <th><?= $this->Paginator->sort('الصور') ?></th>
+                    <th><?= $this->Paginator->sort('تاريخ الانشاء') ?></th>
+                    <th class="actions" style="padding-right:20px"><?= __('خيارات') ?></th>
                 </tr>
             </thead>
             <tbody>
@@ -23,8 +29,8 @@
                 <tr>
                     <td><?= $this->Number->format($product->id) ?></td>
                     <td><?= h($product->name) ?></td>
+                    <td><?= $this->Html->link(__('View'), ['action' => 'view', $product->id]) ?></td>
                     <td><?= h($product->created) ?></td>
-                    <td><?= h($product->mobile) ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $product->id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $product->id]) ?>
@@ -45,4 +51,7 @@
         </ul>
         <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
     </div>
+</div>
+</div>
+</div>
 </div>
