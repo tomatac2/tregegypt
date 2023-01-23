@@ -16,9 +16,9 @@ class AboutController extends AppController
 
     function home(){
          $this->viewBuilder()->setLayout('website');
-        $products = TableRegistry::get("Products")->getCompanyProducts();
+        $teams = TableRegistry::get("Teams")->find()->All();
 
-        $this->set(compact('products'));
+        $this->set(compact('teams'));
     }
     /**
      * Index method

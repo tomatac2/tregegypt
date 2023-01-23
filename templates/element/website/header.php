@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>TregEgypt</title>
+  <title>تريج مصر</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -71,7 +71,7 @@
           <li><a class="nav-link scrollto" href="index.html#about">الرئيسية</a></li>
           <li><a class="nav-link scrollto" href="index.html#services">عن الشركة</a></li>
           <li><a class="nav-link scrollto" href="index.html#portfolio">المدونة</a></li>
-          <li><a class="nav-link scrollto" href="index.html#team">سابقة الأعمال</a></li>
+          <li><a class="nav-link scrollto" href="index.html#team">فريق العمل</a></li>
           <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
               <li><a href="#">Drop Down 1</a></li>
@@ -122,4 +122,6 @@
   .mobile-nav-toggle , .nav-link{color:white !important}
   .img>img{    width: 100%;
     height: 300px;}
+
+    .scroll-top {right: auto;left: 15px;}
   </style>

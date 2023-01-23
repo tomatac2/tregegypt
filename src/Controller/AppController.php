@@ -15,6 +15,7 @@ declare(strict_types=1);
  * @license   https://opensource.org/licenses/mit-license.php MIT License
  */
 namespace App\Controller;
+use Cake\ORM\TableRegistry;
 
 use Cake\Controller\Controller;
 
@@ -45,9 +46,12 @@ class AppController extends Controller
         $this->loadComponent('Flash');
         // Add this line to check authentication result and lock your site
         $this->loadComponent('Authentication.Authentication');
-       
+
+        $products = TableRegistry::get("Products")->getCompanyProducts();
+        $last3Articles = TableRegistry::get("Articles")->find()->limit(3)->order(['Articles.id'=>'DESC'])->All();
+
         $thisUser =  $this->Authentication->getIdentity()->id;
 
-        $this->set(compact('thisUser'));
+        $this->set(compact('thisUser','products','last3Articles'));
     }
 }

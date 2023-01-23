@@ -8,45 +8,44 @@
 
           <div class="col-lg-3 col-md-6">
             <div class="footer-info">
-              <h3>HeroBiz</h3>
+              <img src="<?=URL?>assets/egy/imgs/logo-2.png" alt=""><br> 
               <p>
-                A108 Adam Street <br>
-                NY 535022, USA<br><br>
-                <strong>Phone:</strong> +1 5589 55488 55<br>
-                <strong>Email:</strong> info@example.com<br>
+              شركة تريج مصر الأفضل في مصر في مجال تصنيع وإنتاج وتطوير أبواب وشبابيك UPVC لجميع أنواع وأشكال وتصاميم الشبابيك والنوافذ.
               </p>
+              
             </div>
           </div>
 
           <div class="col-lg-2 col-md-6 footer-links">
-            <h4>Useful Links</h4>
+            <h4>منتجات الشركة</h4>
             <ul>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Privacy policy</a></li>
+              <?php foreach($products as $product):?>
+                <li><i class="bi bi-chevron-right"></i> <a href="#"><?=$product["name"]?></a></li>
+              <?php endforeach;?>
             </ul>
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Services</h4>
+            <h4>الأخبار & المقالات</h4>
             <ul>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Web Design</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Web Development</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Product Management</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Marketing</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Graphic Design</a></li>
+            <?php foreach($last3Articles as $k=> $last3Articles):?>
+              <?php if($k < 2){?>
+                <li>
+                    <img style="width: 50px;border-radius: 50%;" src="<?=URL.$last3Articles["photo"]?>" alt="">
+                   <a href="#"><?=$last3Articles["title"]?><br><br><?=$last3Articles["created_at"]?></a>     
+              </li>
+              <?php }?>
+              <?php endforeach;?>
             </ul>
           </div>
 
-          <div class="col-lg-4 col-md-6 footer-newsletter">
-            <h4>Our Newsletter</h4>
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
-            </form>
-
+          <div class="col-lg-4 col-md-6 footer-links">
+            <h4>بيانات التواصل</h4>
+            <ul>
+              <li><i class="bi bi-chevron-right"></i>عنوان الشركة العاشر من رمضان، المنطقة الصناعية الثالثة A2، قطعة رقم 3 - 5 - 17</li>
+              <li><i class="bi bi-chevron-right"></i>البريد الإلكترونيinfo@tregegypt.com</li>
+              <li><i class="bi bi-chevron-right"></i>رقم الهاتف 01003213639</li>
+            </ul>
           </div>
 
         </div>
@@ -58,23 +57,11 @@
 
         <div class="d-flex flex-column align-items-center align-items-lg-start">
           <div class="copyright">
-            &copy; Copyright <strong><span>HeroBiz</span></strong>. All Rights Reserved
-          </div>
-          <div class="credits">
-            <!-- All the links in the footer should remain intact. -->
-            <!-- You can delete the links only if you purchased the pro version. -->
-            <!-- Licensing information: https://bootstrapmade.com/license/ -->
-            <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/herobiz-bootstrap-business-template/ -->
-            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-          </div>
-        </div>
+          جميع الحقوق محفوظة <strong><span>تريج مصر</span></strong>  © 2023  
 
-        <div class="social-links order-first order-lg-last mb-3 mb-lg-0">
-          <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-          <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-          <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-          <a href="#" class="google-plus"><i class="bi bi-skype"></i></a>
-          <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+
+          </div>
+
         </div>
 
       </div>
@@ -82,6 +69,12 @@
 
   </footer><!-- End Footer -->
 
+  <style>
+     .footer-info > p , .footer-content > div > div > div > h4 , .footer-content > div > div > div  > ul >li > a ,  .footer-content > div > div > div > p { color: white !important;}
+      .footer-content h4::after{    width: 100px;    right: 0;    left: auto;}
+      .footer .footer-content .footer-links ul i{    padding-left: 10px;}
+       .footer-links ul a {padding-right: 5px;}
+  </style>
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <div id="preloader"></div>

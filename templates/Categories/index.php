@@ -29,7 +29,7 @@
                     <td><?= h($category->name) ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('تعديل'), ['action' => 'edit', $category->id]) ?>
-                        <?= $this->Form->postLink(__('حذف'), ['action' => 'delete', $category->id], ['confirm' => __('Are you sure you want to delete # {0}?', $category->id)]) ?>
+                        <?= $this->Form->postLink(__('حذف'), ['action' => 'delete', $category->id], ["style"=>"color:red",'confirm' => __('سيتم حذف التصنيف رقم: # {0}?', $category->id)]) ?>
                     </td>
                 </tr>
                 <?php endforeach; ?>

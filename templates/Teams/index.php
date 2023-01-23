@@ -27,8 +27,8 @@
                     <td><?= h($team->career) ?></td>
                     <td><img src="<?=URL?><?= h($team->photo) ?>" height="150" width="150" alt=""></td>
                     <td class="actions">
-                        <?= $this->Html->link(__('تعديل'), ['action' => 'edit', $team->id]) ?>
-                        <?= $this->Form->postLink(__('حذف'), ['action' => 'delete', $team->id], ['confirm' => __('سيتم حذف الموظف رقم: # {0}?', $team->id)]) ?>
+                        <?= $this->Html->link(__('تعديل'), ['action' => 'edit', $team->id] ,[ 'class'=>'btn btn-rounded btn-outline-primary']) ?>
+                        <?= $this->Form->postLink(__('حذف'), ['action' => 'delete', $team->id ], ['confirm' => __('تأكيد الحذف؟', $team->id) ,'class'=>'btn btn-rounded btn-outline-danger']) ?>
                     </td>
                 </tr>
                 <?php endforeach; ?>

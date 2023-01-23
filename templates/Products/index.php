@@ -32,10 +32,12 @@
                     <td><?= $this->Html->link(__('View'), ['action' => 'view', $product->id]) ?></td>
                     <td><?= h($product->created) ?></td>
                     <td class="actions">
-                        <?= $this->Html->link(__('View'), ['action' => 'view', $product->id]) ?>
-                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $product->id]) ?>
-                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $product->id], ['confirm' => __('Are you sure you want to delete # {0}?', $product->id)]) ?>
+                        <?= $this->Html->link(__('تعديل'), ['action' => 'edit', $product->id] ,[ 'class'=>'btn btn-rounded btn-outline-primary']) ?>
+                        <?= $this->Html->link(__('عرض الصور'), ['action' => 'edit', $product->id] ,[ 'class'=>'btn btn-rounded btn-outline-success']) ?>
+                        <?= $this->Form->postLink(__('حذف'), ['action' => 'delete', $product->id ], ['confirm' => __('تأكيد الحذف؟', $product->id) ,'class'=>'btn btn-rounded btn-outline-danger']) ?>
                     </td>
+          
+                
                 </tr>
                 <?php endforeach; ?>
             </tbody>

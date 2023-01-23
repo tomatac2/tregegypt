@@ -50,7 +50,7 @@ return static function (RouteBuilder $routes) {
          * its action called 'display', and we pass a param to select the view file
          * to use (in this case, templates/Pages/home.php)...
          */
-        $builder->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
+        $builder->connect('/', ['controller' => 'About', 'action' => 'home']);
 
         /*
          * ...and connect the rest of 'Pages' controller's URLs.
@@ -67,6 +67,11 @@ return static function (RouteBuilder $routes) {
         $builder->connect('/team-list', ['controller' => 'Teams', 'action' => 'index']);
         $builder->connect('/settings', ['controller' => 'Users', 'action' => 'edit' , 1]);
 
+
+        //website
+        $builder->connect('/details/:id', ['controller' => 'Articles', 'action' => 'details'])->setPass(['id']);
+
+        
         $builder->fallbacks();
     });
 

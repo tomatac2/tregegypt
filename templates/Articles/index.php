@@ -34,9 +34,10 @@
                     <td><?= h($article->tags) ?></td>
                     <td><?= h($article->created) ?></td>
                     <td class="actions">
-                        <?= $this->Html->link(__('تعديل'), ['action' => 'edit', $article->id]) ?>
-                        <?= $this->Form->postLink(__('حذف'), ['action' => 'delete', $article->id], ['confirm' => __('سيتم حذف المقال رقم: # {0}?', $article->id)]) ?>
+                        <?= $this->Html->link(__('تعديل'), ['action' => 'edit', $article->id] ,[ 'class'=>'btn btn-rounded btn-outline-primary']) ?>
+                        <?= $this->Form->postLink(__('حذف'), ['action' => 'delete', $article->id ], ['confirm' => __('تأكيد الحذف؟', $article->id) ,'class'=>'btn btn-rounded btn-outline-danger']) ?>
                     </td>
+          
                 </tr>
                 <?php endforeach; ?>
             </tbody>

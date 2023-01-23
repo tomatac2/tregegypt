@@ -13,6 +13,16 @@ use App\Hellpers\Error;
  */
 class ArticlesController extends AppController
 {
+
+
+    function details($id){
+        $this->viewBuilder()->setLayout('website');
+        $article = $this->Articles->get($id, [
+            'contain' => ['Categories'],
+        ]);
+       $categories = $this->Articles->Categories->find()->All();
+        $this->set(compact('article','categories'));
+    }
     /**
      * Index method
      *
