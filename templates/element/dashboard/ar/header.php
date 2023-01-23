@@ -79,10 +79,7 @@
 	</ul>
 </div>
 
-<!-- <div class="account-stat">
-	<h5 style="text-align: right;">نبذة عنا</h5>
-	<p style="text-align: right;font-size:12px !important"><?=$about["about_ar"]?></p>
-</div> -->
+
 
 </div>
 </div>
@@ -190,14 +187,14 @@
 		
 		 
 			<!------------ categories ---------->
-			<li class="nav-item dashboard"><a class="nav-link" href="<?=URL?>dashboard"><i data-feather="home"></i> &nbsp;&nbsp;&nbsp;&nbsp; الرئيسية</a></li>
 			<li class="nav-item"><a class="nav-link" href="<?=URL?>categories-list"><i data-feather="plus-square"></i> &nbsp;&nbsp;&nbsp;&nbsp;  التصنيفات</a></li>
 			<li class="nav-item"><a class="nav-link" href="<?=URL?>articles-list"><i data-feather="edit-3"></i> &nbsp;&nbsp;&nbsp;&nbsp; المقالات</a></li>
-			<li class="nav-item"><a class="nav-link" href="<?=URL?>advertise-list"><i data-feather="grid"></i> &nbsp;&nbsp;&nbsp;&nbsp; الاعلانات</a></li>
+			<li class="nav-item"><a class="nav-link" href="<?=URL?>products-list"><i data-feather="agents"></i> &nbsp;&nbsp;&nbsp;&nbsp; منتحات الشركة</a></li>
+			<li class="nav-item"><a class="nav-link" href="<?=URL?>agents-list"><i data-feather="agents"></i> &nbsp;&nbsp;&nbsp;&nbsp; الوكلاء</a></li>
+			<li class="nav-item"><a class="nav-link" href="<?=URL?>team-list"><i data-feather="agents"></i> &nbsp;&nbsp;&nbsp;&nbsp; فريق العمل</a></li>
 			<li class="nav-item"><a class="nav-link" href="<?=URL?>comments-list"><i data-feather="users"></i> &nbsp;&nbsp;&nbsp;&nbsp; التعليقات</a></li>
 			<li class="nav-item"><a class="nav-link" href="<?=URL?>contacts-list"><i data-feather="users"></i> &nbsp;&nbsp;&nbsp;&nbsp; تواصل العملاء</a></li>
-			<li class="nav-item"><a class="nav-link" href="<?=URL?>about/edit/1"><i data-feather="settings"></i> &nbsp;&nbsp;&nbsp;&nbsp; من نحن</a></li>
-			<li class="nav-item"><a class="nav-link" href="<?=URL?>email-list/index"><i data-feather="mail"></i> &nbsp;&nbsp;&nbsp;&nbsp; القائمة البريدية</a></li>
+			<li class="nav-item"><a class="nav-link" href="<?=URL?>settings"><i data-feather="settings"></i> &nbsp;&nbsp;&nbsp;&nbsp; من نحن</a></li>
 	</ul>
 </div>
 </div>

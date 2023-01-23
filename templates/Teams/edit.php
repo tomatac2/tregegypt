@@ -1,34 +1,31 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var \App\Model\Entity\Team $team
+ * @var \App\Model\Entity\Category $category
  */
 ?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Form->postLink(
-                __('Delete'),
-                ['action' => 'delete', $team->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $team->id), 'class' => 'side-nav-item']
-            ) ?>
-            <?= $this->Html->link(__('List Teams'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-        </div>
+<div class="row card card-margin ">
+<div class="column-responsive column-80 card-body ">
+
+    <aside class="column card-header">
+        <div class="col-sm-6"><legend><?= __('إضافة موظف جديد') ?></legend></div>
+        <div class="col-sm-6"><?= $this->Html->link(__('الفريق'), ['action' => 'index'],['class' => ' button float-left btn btn-rounded btn-outline-primary mt-1 mr-1    card-toolbar side-nav-item' ]) ?></div>
     </aside>
-    <div class="column-responsive column-80">
-        <div class="teams form content">
-            <?= $this->Form->create($team) ?>
+
+    <div class="card-bod" style="margin-top:25px;">
+        <div class="categories form content">
+            <?= $this->Form->create($team,["type"=>'file']) ?>
             <fieldset>
-                <legend><?= __('Edit Team') ?></legend>
-                <?php
-                    echo $this->Form->control('name');
-                    echo $this->Form->control('photo');
-                    echo $this->Form->control('career');
+            <?php
+                    echo $this->Form->control('اسم الموظف',["name"=>"name","value"=>$team["name"],'class'=>"form-control"]); echo '<br>';
+                    echo $this->Form->control('التخصص',["name"=>"career","value"=>$team["career"],'class'=>"form-control"]); echo '<br>';
+                    echo '<img src="'.URL.$team["photo"].'" height="150" width="150">'; 
+                    echo $this->Form->control('الصورة',["name"=>"photo","type"=>'file','class'=>"form-control"]);echo '<br>';
                 ?>
-            </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
+            </fieldset>  <br>
+            <?= $this->Form->button(__('حفظ'),['class'=>'btn btn-primary mr-2']) ?>
             <?= $this->Form->end() ?>
         </div>
     </div>
+</div>
 </div>

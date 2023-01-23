@@ -57,19 +57,16 @@ return static function (RouteBuilder $routes) {
          */
         $builder->connect('/pages/*', 'Pages::display');
 
-        /*
-         * Connect catchall routes for all controllers.
-         *
-         * The `fallbacks` method is a shortcut for
-         *
-         * ```
-         * $builder->connect('/{controller}', ['action' => 'index']);
-         * $builder->connect('/{controller}/{action}/*', []);
-         * ```
-         *
-         * You can remove these routes once you've connected the
-         * routes you want in your application.
-         */
+        //dashboard links 
+        $builder->connect('/categories-list', ['controller' => 'Categories', 'action' => 'index']);
+        $builder->connect('/articles-list', ['controller' => 'Articles', 'action' => 'index']);
+        $builder->connect('/comments-list', ['controller' => 'Comments', 'action' => 'index']);
+        $builder->connect('/contacts-list', ['controller' => 'Contacts', 'action' => 'index']);
+        $builder->connect('/agents-list', ['controller' => 'Agents', 'action' => 'index']);
+        $builder->connect('/products-list', ['controller' => 'Products', 'action' => 'index']);
+        $builder->connect('/team-list', ['controller' => 'Teams', 'action' => 'index']);
+        $builder->connect('/settings', ['controller' => 'Users', 'action' => 'edit' , 1]);
+
         $builder->fallbacks();
     });
 

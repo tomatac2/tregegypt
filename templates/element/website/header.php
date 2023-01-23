@@ -60,8 +60,7 @@
       <a href="index.html" class="logo d-flex align-items-center scrollto me-auto me-lg-0">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="<?=URL?>assets/img/logo.png" alt=""> -->
-        <img src="<?=URL?>assets/egy/imgs/logo.png" alt="">
-        <h1>تريج مصر<span>.</span></h1>
+        <img src="<?=URL?>assets/egy/imgs/logo-2.png" alt="">
       </a>
 
       <nav id="navbar" class="navbar col-lg-8">
@@ -106,7 +105,7 @@
 			 src: url('<?=URL?>font/NotoKufiArabic-VariableFont_wght.ttf'); } 
 
        body , h1 , h3 , h2 , h4 , h5 , h6 , p  , a {
-        font-family: 'NotoKufiArabic' !important ;
+        font-family: 'NotoKufiArabic' !important ;color:black !important;
        }
     .mobile-nav-toggle {
       right: auto;
@@ -118,5 +117,9 @@
       right: 0;
     }
     }
-  
+
+    #header{    background: #f7730e;}
+  .mobile-nav-toggle , .nav-link{color:white !important}
+  .img>img{    width: 100%;
+    height: 300px;}
   </style>

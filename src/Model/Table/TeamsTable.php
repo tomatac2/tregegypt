@@ -71,4 +71,14 @@ class TeamsTable extends Table
 
         return $validator;
     }
+
+        ////////custom validations 
+        public function validationCreate($validator) {
+            $validator
+            ->notEmpty('name', 'ادخل اسم الموظف') 
+            ->notEmpty('career', 'ادخل تخصص') 
+            ->notEmpty('photo', 'ادخل الصورة') ; 
+        
+            return $validator;
+        }
 }

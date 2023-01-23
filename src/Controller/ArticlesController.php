@@ -6,12 +6,12 @@ use App\Hellpers\GeneralActions;
 use App\Hellpers\Fields;
 use App\Hellpers\Error;
 /**
- * Teams Controller
+ * Articles Controller
  *
- * @property \App\Model\Table\TeamsTable $Teams
- * @method \App\Model\Entity\Team[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
+ * @property \App\Model\Table\ArticlesTable $Articles
+ * @method \App\Model\Entity\Article[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
-class TeamsController extends AppController
+class ArticlesController extends AppController
 {
     /**
      * Index method
@@ -22,12 +22,22 @@ class TeamsController extends AppController
     {
         $this->viewBuilder()->setLayout('dashboard');
 
-        $teams = $this->paginate($this->Teams);
+        $this->paginate = [
+            'contain' => ['Categories'],
+            'order'=>["Articles.id"=>"DESC"]
+        ];
+        $articles = $this->paginate($this->Articles);
 
-        $this->set(compact('teams'));
+        $this->set(compact('articles'));
     }
 
- 
+    /**
+     * View method
+     *
+     * @param string|null $id Article id.
+     * @return \Cake\Http\Response|null|void Renders view
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
 
     /**
      * Add method
@@ -37,32 +47,35 @@ class TeamsController extends AppController
     public function add()
     {
         $this->viewBuilder()->setLayout('dashboard');
-             
+
+
         $req = $this->request->getData();
         $param=[
-            "table_name"=>"Teams",
-            "msg"=>"فريق العمل",
-            "fields"=> [  "name"=>$req["name"],"title"=>$req["title"],'career'=>$req["career"],"photo"=>$req["photo"] ] ,
+            "table_name"=>"Articles",
+            "msg"=>"المقالات",
+            "fields"=> ["category_id"=>$req["category_id"] ,"photo"=>$req["photo"],"title"=>$req["title"] ,"short_desc"=>$req["short_desc"] ,"long_desc"=>$req["long_desc"],"tags"=>$req["tags"] ] ,
             "validate_name"=> "create",
-            "file"=>["name"=>"photo" , "path"=>"library/teams"]
+            "file"=>["name"=>"photo" , "path"=>"library/articles"]
         ];
      
-        if ($this->request->is('post')) {
+        if($this->request->is('post')) {
             $query = GeneralActions::create($param);
-             if ($query["success"] == true) {
+            if ($query["success"] == true) {
                 $this->Flash->success(__('تم الحفظ بنجاح'));
-
-                return $this->redirect(['action' => 'index']);
+            return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__(Error::errorMsg($query["msg"])));
         }
 
+ 
+        $categories = $this->Articles->Categories->find('list', ['limit' => 200])->all();
+        $this->set(compact('article', 'categories'));
     }
 
     /**
      * Edit method
      *
-     * @param string|null $id Team id.
+     * @param string|null $id Article id.
      * @return \Cake\Http\Response|null|void Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
@@ -70,11 +83,9 @@ class TeamsController extends AppController
     {
         $this->viewBuilder()->setLayout('dashboard');
 
-        $team = $this->Teams->get($id, [
+        $article = $this->Articles->get($id, [
             'contain' => [],
         ]);
-       
-     
             if ($this->request->is(['patch', 'post', 'put'])) {
                 $req = $this->request->getData();
                 $fields= Fields::getUpdateFields($req);
@@ -82,11 +93,12 @@ class TeamsController extends AppController
                 $_FILES["photo"] ? $fields["photo"]= $_FILES["photo"] : "";
                 if(empty($_FILES["photo"]["name"])) unset($fields["photo"]);
                 $param=[
-                    "table_name"=>"Teams",
-                    "msg"=>"فريق العمل",
+                    "table_name"=>"Articles",
+                    "msg"=>"الموزعين",
                     "fields"=> $fields , 
-                    "file"=>["name"=>"photo" , "path"=>"library/teams"]
+                    "file"=>["name"=>"photo" , "path"=>"library/articles"]
                 ];
+        
                  $query = GeneralActions::update($param);
                 if ($query["success"]== true) {
                     $this->Flash->success(__('تم التحديث بنجاح'));
@@ -95,24 +107,25 @@ class TeamsController extends AppController
                 }
                 $this->Flash->error(__(Error::errorMsg($query["msg"])));
             }
-        $this->set(compact('team'));
+        $categories = $this->Articles->Categories->find('list', ['limit' => 200])->all();
+        $this->set(compact('article', 'categories'));
     }
 
     /**
      * Delete method
      *
-     * @param string|null $id Team id.
+     * @param string|null $id Article id.
      * @return \Cake\Http\Response|null|void Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        $team = $this->Teams->get($id);
-        if ($this->Teams->delete($team)) {
-            $this->Flash->success(__('The team has been deleted.'));
+        $article = $this->Articles->get($id);
+        if ($this->Articles->delete($article)) {
+            $this->Flash->success(__('تم الحذف بنجاح'));
         } else {
-            $this->Flash->error(__('The team could not be deleted. Please, try again.'));
+            $this->Flash->error(__('لم يتم الحذف'));
         }
 
         return $this->redirect(['action' => 'index']);

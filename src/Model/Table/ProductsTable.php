@@ -89,4 +89,11 @@ class ProductsTable extends Table
     
         return $validator;
     }
+
+    /////////////////queries
+
+    function getCompanyProducts(){
+        $q =  $this->find()->contain(['ProductPhotos'])->All();
+        return $q ; 
+    }
 }
