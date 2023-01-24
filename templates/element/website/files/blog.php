@@ -18,7 +18,7 @@
         </div>
         <h3 class="post-title"><?=$article["title"]?></h3>
         <p> <?=$article["short_desc"]?></p>
-        <a href="blog-details.html" class="readmore stretched-link"><span style="    color: #f7730e !important">قراءة أكثر</span></i></a>
+        <a href="<?=URL.'details/'.$article->id.'/'.str_replace(' ','-',$article->title)?>" class="readmore stretched-link"><span style="    color: #f7730e !important">قراءة أكثر</span></i></a>
       </div>
     </div>
   <?php }?>

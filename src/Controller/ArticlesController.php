@@ -15,13 +15,43 @@ class ArticlesController extends AppController
 {
 
 
-    function details($id){
+    function category($id,$name=null){
+        $this->viewBuilder()->setLayout('website');
+        $articles = $this->Articles->findByCategoryId($id)->contain(['Categories'])->All();
+        $this->set(compact('articles'));
+    }
+
+    function details($id,$name=null){
         $this->viewBuilder()->setLayout('website');
         $article = $this->Articles->get($id, [
             'contain' => ['Categories'],
         ]);
        $categories = $this->Articles->Categories->find()->All();
-        $this->set(compact('article','categories'));
+       $comments = $this->Articles->Comments->find()->where(['article_id'=>$id])->Order(['Comments.id'=>'DESC'])->limit(50)->All();
+       if($this->request->is('post')){
+        $req = $this->request->getData();
+        $param=[
+            "table_name"=>"Comments",
+            "msg"=>"التعليقات",
+            "fields"=> [  "name"=>strip_tags($req["name"]),  "article_id"=>$id,  "email"=>strip_tags($req["email"]),   "comment"=>strip_tags($req["comment"]), ] ,
+            "validate_name"=> "create",
+        ];
+        $query = GeneralActions::create($param);
+        if ($query["success"] == true) {
+            //add comment count 
+            $paramArticle=[
+                "table_name"=>"Articles",
+                "fields"=> [  "id"=>$id ,   "comments_count"=> $article["comments_count"]+1 ] ,
+            ];
+            GeneralActions::update($paramArticle);
+
+            $this->Flash->success(__('تم الحفظ بنجاح'));
+            return $this->redirect(['action' => 'details' , $id]);
+        }
+        $this->Flash->error(__(Error::errorMsg($query["msg"])));
+       }
+
+        $this->set(compact('article','categories','comments'));
     }
     /**
      * Index method

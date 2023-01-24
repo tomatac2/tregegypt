@@ -18,91 +18,26 @@ class CommentsController extends AppController
      */
     public function index()
     {
+        $this->viewBuilder()->setLayout('dashboard');
+
         $this->paginate = [
             'contain' => ['Articles'],
+            "order"=>["Comments.id"=>"DESC"]
         ];
         $comments = $this->paginate($this->Comments);
 
         $this->set(compact('comments'));
     }
 
-    /**
-     * View method
-     *
-     * @param string|null $id Comment id.
-     * @return \Cake\Http\Response|null|void Renders view
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function view($id = null)
-    {
-        $comment = $this->Comments->get($id, [
-            'contain' => ['Articles'],
-        ]);
-
-        $this->set(compact('comment'));
-    }
-
-    /**
-     * Add method
-     *
-     * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
-     */
-    public function add()
-    {
-        $comment = $this->Comments->newEmptyEntity();
-        if ($this->request->is('post')) {
-            $comment = $this->Comments->patchEntity($comment, $this->request->getData());
-            if ($this->Comments->save($comment)) {
-                $this->Flash->success(__('The comment has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
-            }
-            $this->Flash->error(__('The comment could not be saved. Please, try again.'));
-        }
-        $articles = $this->Comments->Articles->find('list', ['limit' => 200])->all();
-        $this->set(compact('comment', 'articles'));
-    }
-
-    /**
-     * Edit method
-     *
-     * @param string|null $id Comment id.
-     * @return \Cake\Http\Response|null|void Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function edit($id = null)
-    {
-        $comment = $this->Comments->get($id, [
-            'contain' => [],
-        ]);
-        if ($this->request->is(['patch', 'post', 'put'])) {
-            $comment = $this->Comments->patchEntity($comment, $this->request->getData());
-            if ($this->Comments->save($comment)) {
-                $this->Flash->success(__('The comment has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
-            }
-            $this->Flash->error(__('The comment could not be saved. Please, try again.'));
-        }
-        $articles = $this->Comments->Articles->find('list', ['limit' => 200])->all();
-        $this->set(compact('comment', 'articles'));
-    }
-
-    /**
-     * Delete method
-     *
-     * @param string|null $id Comment id.
-     * @return \Cake\Http\Response|null|void Redirects to index.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
+  
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
         $comment = $this->Comments->get($id);
         if ($this->Comments->delete($comment)) {
-            $this->Flash->success(__('The comment has been deleted.'));
+            $this->Flash->success(__('تم الحذف بنجاح'));
         } else {
-            $this->Flash->error(__('The comment could not be deleted. Please, try again.'));
+            $this->Flash->error(__('لم يتم الحذف'));
         }
 
         return $this->redirect(['action' => 'index']);

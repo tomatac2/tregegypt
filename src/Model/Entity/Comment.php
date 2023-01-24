@@ -33,5 +33,40 @@ class Comment extends Entity
         'name' => true,
         'email' => true,
         'article' => true,
+        'created' => true,
     ];
+
+    
+    protected $_virtual = [
+        'created_at'
+    ];
+
+
+    function _getCreatedAt()
+    {
+        $m = date("M",strtotime("".$this->created."") ) ; 
+        $year = date("Y",strtotime("".$this->created."") ) ; 
+
+        $month =$this->getArabicMonth($m);
+        return $month.'-'.$year ;
+    }
+    
+    function getArabicMonth($m){
+        $month = [
+            "Jan"=>"يناير",
+            "Feb"=>"فبراير",
+            "Mar"=>"مارس",
+            "Apr"=>"ابريل",
+            "May"=>"مايو",
+            "Jun"=>"يونيو",
+            "Jul"=>"يوليو",
+            "Aug"=>"اغسطس",
+            "Sep"=>"سبتمبر",
+            "Oct"=>"اكتوبر",
+            "Nov"=>"نوفمبر",
+            "Dec"=>"ديسمبر",
+        ];
+
+        return $month[$m];
+    }
 }

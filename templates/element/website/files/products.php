@@ -3,13 +3,13 @@
     <div class="col-xl-6 col-md-6" data-aos="zoom-in" data-aos-delay="200">
     <div class="service-item">
         <div class="img">
-        <img src="<?=URL.$v["product_photos"][0]['photo']?>" class="img-fluid" alt="">
+                <img src="<?=URL.$v["product_photos"][0]['photo']?>" class="img-fluid" alt="">
         </div>
         <div class="details position-relative">
         <div class="icon">
             <i class="bi bi-activity"></i>
         </div>
-        <a href="#" class="stretched-link">
+        <a href="<?=URL.'products/'.$v["id"].'/'.str_replace(" ","-",$v["name"])?>" class="stretched-link">
             <h3><?=$v["name"]?></h3>
         </a>
         <p>كل ماتريد معرفته عن . <?=$v["name"]?></p>

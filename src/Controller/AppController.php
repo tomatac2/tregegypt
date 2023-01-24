@@ -47,6 +47,8 @@ class AppController extends Controller
         // Add this line to check authentication result and lock your site
         $this->loadComponent('Authentication.Authentication');
 
+        $this->Authentication->allowUnauthenticated(['home', 'details' , 'category' ,'agents' ,'getProduct' ,'products' ,'contact']);
+
         $products = TableRegistry::get("Products")->getCompanyProducts();
         $last3Articles = TableRegistry::get("Articles")->find()->limit(3)->order(['Articles.id'=>'DESC'])->All();
 

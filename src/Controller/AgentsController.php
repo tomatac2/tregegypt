@@ -14,6 +14,12 @@ use App\Hellpers\Fields;
  */
 class AgentsController extends AppController
 {
+
+    function agents(){
+        $this->viewBuilder()->setLayout('website');
+        $agents = $this->Agents->find()->limit(50)->order(['id'=>"DESC"])->All();
+        $this->set(compact('agents'));
+    }
     /**
      * Index method
      *

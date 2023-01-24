@@ -32,7 +32,7 @@
               <?php if($k < 2){?>
                 <li>
                     <img style="width: 50px;border-radius: 50%;" src="<?=URL.$last3Articles["photo"]?>" alt="">
-                   <a href="#"><?=$last3Articles["title"]?><br><br><?=$last3Articles["created_at"]?></a>     
+                   <a href="<?=URL.'details/'.$last3Articles["id"].'/'.str_replace(' ','-',$last3Articles["title"])?>"><?=$last3Articles["title"]?><br><br><?=$last3Articles["created_at"]?></a>     
               </li>
               <?php }?>
               <?php endforeach;?>

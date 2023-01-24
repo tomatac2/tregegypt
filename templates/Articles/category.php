@@ -22,10 +22,11 @@
     <div class="row g-5">
 
       <div class="col-lg-8">
-
+       
+      
         <article class="blog-details">
-
-          <div class="post-img">
+        <?php foreach($articles as $article){?>
+          <div class="post-img" style="max-width:400px">
             <img src="<?=URL.$article["photo"]?>" alt="" class="img-fluid">
           </div>
 
@@ -38,14 +39,16 @@
             </ul>
           </div><!-- End meta top -->
 
-          <div class="content">
-               <?= $article["long_desc"] ?>
+          <div class="content" style="
+          padding: 30px;box-shadow: 0 4px 16px rgba(var(--color-black-rgb), 0.1);margin: 50px 0 50px;">
+               <?= $article["short_desc"] ?>
+                <div style="float:left">
+                    <a href="<?=URL.'details/'.$article["id"].'/'.str_replace(' ','-',$article["title"])?>" class="readmore stretched-link"><span style="    color: #f7730e !important">قراءة أكثر</span></a>
+                </div>
           </div><!-- End post content -->
 
-
-
-        <div class="comments"> <?=$this->element('website/files/comments')?> </div><!-- End blog comments -->
-
+          <?php } ?>
+        </article>
       </div>
 
       <?php echo $this->element('website/files/shortcut/left_side')?>

@@ -108,8 +108,5 @@ $( document ).ready(function() {
 
 </html>
 
-#ef5753;
-    
-}
 
 </style>

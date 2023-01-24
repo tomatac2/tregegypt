@@ -2,7 +2,9 @@
 declare(strict_types=1);
 
 namespace App\Controller;
-
+use App\Hellpers\Error;
+use App\Hellpers\GeneralActions;
+use App\Hellpers\Fields;
 /**
  * ContactUs Controller
  *
@@ -16,6 +18,49 @@ class ContactUsController extends AppController
      *
      * @return \Cake\Http\Response|null|void Renders view
      */
+    function contact(){ 
+        $this->viewBuilder()->setLayout('website');
+     $req = $this->request->getData();
+     $param=[
+         "table_name"=>"ContactUs",
+         "msg"=>"تواصل معنا",
+         "fields"=> [  "status"=>"contact",  "full_name"=>$req["full_name"],  "email"=>$req["email"],   "message"=>$req["message"],  "subject"=>$req["subject"] ] ,
+         "validate_name"=> "contact",
+     ];
+  
+     if ($this->request->is('post')) {
+         $query = GeneralActions::create($param);
+          if ($query["success"] == true) {
+             $this->Flash->success(__('تم الحفظ بنجاح'));
+
+             return $this->redirect(["controller"=>"About",'action' => 'home' ]);
+         }
+         $this->Flash->error(__(Error::errorMsg($query["msg"])));
+     }
+
+    }
+    function getProduct(){ 
+        $this->viewBuilder()->setLayout('website');
+     $req = $this->request->getData();
+     $param=[
+         "table_name"=>"ContactUs",
+         "msg"=>"اطلب منتج",
+         "fields"=> [  "status"=>"order",  "full_name"=>$req["full_name"],  "email"=>$req["email"],   "message"=>$req["message"],  "mobile"=>$req["mobile"] ] ,
+         "validate_name"=> "getProduct",
+     ];
+  
+     if ($this->request->is('post')) {
+         $query = GeneralActions::create($param);
+          if ($query["success"] == true) {
+             $this->Flash->success(__('تم الحفظ بنجاح'));
+
+             return $this->redirect(["controller"=>"About",'action' => 'home' ]);
+         }
+         $this->Flash->error(__(Error::errorMsg($query["msg"])));
+     }
+
+    }
+
     public function index()
     {
         $contactUs = $this->paginate($this->ContactUs);

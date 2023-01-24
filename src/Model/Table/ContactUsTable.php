@@ -87,4 +87,25 @@ class ContactUsTable extends Table
 
         return $validator;
     }
+
+    //custom 
+    public function validationGetProduct($validator) {
+        $validator
+        ->notEmpty('full_name', 'الاسم الكامل (مطلوب)') 
+        ->notEmpty('email', 'البريد الالكترونى (مطلوب)') 
+        ->notEmpty('mobile', 'رقم الهاتف (مطلوب)') 
+        ->notEmpty('message', ' المنتج (مطلوب)')
+         ; 
+    
+        return $validator;
+    }
+//////////
+    public function validationContact($validator) {
+        $validator
+        ->notEmpty('full_name', 'الاسم الكامل (مطلوب)') 
+        ->notEmpty('email', 'البريد الالكترونى (مطلوب)') 
+         ; 
+    
+        return $validator;
+    }
 }

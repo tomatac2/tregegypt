@@ -68,28 +68,21 @@
 
         
 
-          <li><a class="nav-link scrollto" href="index.html#about">الرئيسية</a></li>
-          <li><a class="nav-link scrollto" href="index.html#services">عن الشركة</a></li>
-          <li><a class="nav-link scrollto" href="index.html#portfolio">المدونة</a></li>
-          <li><a class="nav-link scrollto" href="index.html#team">فريق العمل</a></li>
-          <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+          <li><a class="nav-link scrollto" href="<?=URL?>">الرئيسية</a></li>
+          <li class="dropdown"><a href="#"><span>عن الشركة</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
+              <li><a href="<?=URL.'agents'?>">الوكلاء</a></li>
+              <li style="border:none"><a href="<?=URL.'get-product'?>">اطلب منتجاتنا</a></li>
             </ul>
-          </li> -->
-          <li><a class="nav-link scrollto" href="index.html#contact">اطلب منتجك</a></li>
+          </li>
+          <li><a class="nav-link scrollto" href="index.html#portfolio">المدونة</a></li>
+          <li class="dropdown"><a href="#"><span>منتجاتنا</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+              <li><a href="<?=URL.'products/27/شبابيك-uPVC'?>"> شبابيك uPVC </a></li>
+              <li style="border:none"><a href="<?=URL.'products/30/أبواب-uPVC'?>"> أبواب uPVC</a></li>
+            </ul>
+          </li>         
+          <li><a class="nav-link scrollto" href="<?=URL.'contact'?>"> تواصل معنا</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle d-none"></i>
       </nav><!-- .navbar -->
@@ -124,4 +117,17 @@
     height: 300px;}
 
     .scroll-top {right: auto;left: 15px;}
+
+    .navbar a i, .navbar a:focus i{    margin-right: 5px;    margin-left: 0px;}
+    .dropdown>a{color:white !important;}
+
+    @media (min-width: 1280px){
+    .navbar .dropdown ul {
+      left: auto;right: 0;    background: #ffffff;
+    }
+    .navbar .dropdown ul li {border-bottom: 1px solid #ddd;}
+
+    .navbar .dropdown a:hover, .navbar .dropdown .active, .navbar .dropdown .active:focus, .navbar .dropdown:hover>a{   color:white !important; background: #ff0000 !important;}
+    }
+    .blog .blog-details .meta-top i{    margin-left: 8px;     margin-right: 8px;}
   </style>

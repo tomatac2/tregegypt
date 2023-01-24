@@ -43,6 +43,9 @@ class CommentsTable extends Table
         $this->setDisplayField('name');
         $this->setPrimaryKey('id');
 
+        $this->addBehavior('Timestamp');
+
+        
         $this->belongsTo('Articles', [
             'foreignKey' => 'article_id',
         ]);
@@ -89,5 +92,15 @@ class CommentsTable extends Table
         $rules->add($rules->existsIn('article_id', 'Articles'), ['errorField' => 'article_id']);
 
         return $rules;
+    }
+
+      ////////custom validations 
+      public function validationCreate($validator) {
+        $validator
+        ->notEmpty('name', 'ادخل اسم') 
+        ->notEmpty('email', 'ادخل البريد الالكترونى') 
+        ->notEmpty('comment', 'ادخل التعليق') ; 
+    
+        return $validator;
     }
 }
