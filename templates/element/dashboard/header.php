@@ -21,5 +21,6 @@ th a {    line-height: normal;  }
    
     td{    padding: 20px;border: 1px solid ; }
 .actions > a{    border: 1px solid; padding: 5px;}
+table>thead>tr{    text-align: center;}
 </style>
 

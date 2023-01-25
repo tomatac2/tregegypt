@@ -61,8 +61,24 @@ class ContactUsController extends AppController
 
     }
 
+    public function indexOrders()
+    {
+        $this->viewBuilder()->setLayout('dashboard');
+        $this->paginate = [
+            "order"=>["ContactUs.id"=>'DESC'],
+            "conditions"=>["ContactUs.status"=>"order"]
+        ] ;
+        $contactUs = $this->paginate($this->ContactUs);
+
+        $this->set(compact('contactUs'));
+    }
     public function index()
     {
+        $this->viewBuilder()->setLayout('dashboard');
+        $this->paginate = [
+            "order"=>["ContactUs.id"=>'DESC'],
+            "conditions"=>["ContactUs.status"=>"contact"]
+        ] ;
         $contactUs = $this->paginate($this->ContactUs);
 
         $this->set(compact('contactUs'));

@@ -57,7 +57,7 @@
   <header id="header" class="header fixed-top" data-scrollto-offset="0">
     <div class="container-fluid d-flex align-items-center justify-content-between">
 
-      <a href="index.html" class="logo d-flex align-items-center scrollto me-auto me-lg-0">
+      <a href="<?=URL?>" class="logo d-flex align-items-center scrollto me-auto me-lg-0">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="<?=URL?>assets/img/logo.png" alt=""> -->
         <img src="<?=URL?>assets/egy/imgs/logo-2.png" alt="">
@@ -75,7 +75,7 @@
               <li style="border:none"><a href="<?=URL.'get-product'?>">اطلب منتجاتنا</a></li>
             </ul>
           </li>
-          <li><a class="nav-link scrollto" href="index.html#portfolio">المدونة</a></li>
+          <li><a class="nav-link scrollto" href="<?=URL.'category/'.$last3Articles[0]["category_id"].'/'.str_replace(" ","-",$last3Articles[0]["title"])?>">المدونة</a></li>
           <li class="dropdown"><a href="#"><span>منتجاتنا</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
               <li><a href="<?=URL.'products/27/شبابيك-uPVC'?>"> شبابيك uPVC </a></li>
@@ -130,4 +130,10 @@
     .navbar .dropdown a:hover, .navbar .dropdown .active, .navbar .dropdown .active:focus, .navbar .dropdown:hover>a{   color:white !important; background: #ff0000 !important;}
     }
     .blog .blog-details .meta-top i{    margin-left: 8px;     margin-right: 8px;}
+   
+    .portfolio .portfolio-item .portfolio-info .preview-link, .portfolio .portfolio-item .portfolio-info .details-link{
+       right: 10px !important;
+    color: white !important;
+  }
+  .portfolio-info>h4{ color: white !important;}
   </style>

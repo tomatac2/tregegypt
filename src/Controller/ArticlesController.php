@@ -26,7 +26,6 @@ class ArticlesController extends AppController
         $article = $this->Articles->get($id, [
             'contain' => ['Categories'],
         ]);
-       $categories = $this->Articles->Categories->find()->All();
        $comments = $this->Articles->Comments->find()->where(['article_id'=>$id])->Order(['Comments.id'=>'DESC'])->limit(50)->All();
        if($this->request->is('post')){
         $req = $this->request->getData();
@@ -51,7 +50,7 @@ class ArticlesController extends AppController
         $this->Flash->error(__(Error::errorMsg($query["msg"])));
        }
 
-        $this->set(compact('article','categories','comments'));
+        $this->set(compact('article','comments'));
     }
     /**
      * Index method

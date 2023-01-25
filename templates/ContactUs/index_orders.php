@@ -8,7 +8,7 @@
 <div class="col-sm-12">
 <div class="card">
 <div class="card-header">
-    <h3 class="float-right mt-1 mr-1 card-toolbar side-nav-item"><?= __('طلبات التواصل') ?></h3>
+    <h3 class="float-right mt-1 mr-1 card-toolbar side-nav-item"><?= __('طلبات المنتجات') ?></h3>
 
 </div>
 
@@ -20,8 +20,9 @@
                     <th><?= $this->Paginator->sort('الرقم') ?></th>
                     <th><?= $this->Paginator->sort('الاسم كامل') ?></th>
                     <th><?= $this->Paginator->sort('البريد الالاكترونى') ?></th>
-                    <th><?= $this->Paginator->sort('الموضوع') ?></th>
-                    <th><?= $this->Paginator->sort('الرسالة') ?></th>
+                    <th><?= $this->Paginator->sort('رقم الهاتف') ?></th>
+                    <th><?= $this->Paginator->sort('المنتج') ?></th>
+                    <th><?= $this->Paginator->sort('ملاحظات') ?></th>
                     <th><?= $this->Paginator->sort('التاريخ') ?></th>
 
                 </tr>
@@ -32,8 +33,9 @@
                     <td><?= $this->Number->format($contactU->id) ?></td>
                     <td><?= h($contactU->full_name) ?></td>
                     <td><?= h($contactU->email) ?></td>
-                    <td><?= h($contactU->subject) ?></td>
+                    <td><?= h($contactU->mobile) ?></td>
                     <td><?= h($contactU->message) ?></td>
+                    <td><?= h($contactU->notes) ?></td>
                     <td><?= h($contactU->created) ?></td>
                 </tr>
                 <?php endforeach; ?>

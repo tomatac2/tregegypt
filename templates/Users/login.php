@@ -1,15 +1,20 @@
 <!-- in /templates/Users/login.php -->
-<div class="users form">
-    <?= $this->Flash->render() ?>
-    <h3>Login</h3>
+<div class="row card card-margin ">
+<div class="column-responsive column-80 card-body ">
+
+<div class="users form" style="    text-align: right;">
+    <?= $this->Flash->render() ?><br>
+    <h3>تسجيل الدخول للوحة التحكم</h3>  <br>
     <?= $this->Form->create() ?>
-    <fieldset>
-        <legend><?= __('Please enter your username and password') ?></legend>
-        <?= $this->Form->control('email', ['required' => true]) ?>
-        <?= $this->Form->control('password', ['required' => true]) ?>
+    <fieldset style="    direction: rtl;">
+        <?= $this->Form->control('البريد الالكترونى', ['name'=>'email','required' => true,'class'=>"form-control"]) ?>  <br>
+        <?= $this->Form->control('كلمة المرور', ['name'=>'password' ,'type'=>'password','required' => true,'class'=>"form-control"]) ?>
     </fieldset>
-    <?= $this->Form->submit(__('Login')); ?>
+    <br>
+    <?= $this->Form->submit(__('تسجيل الدخول'),['class'=>'btn btn-primary mr-2',"style"=>"float: left;"]); ?>
     <?= $this->Form->end() ?>
 
-    <?= $this->Html->link("Add User", ['action' => 'add']) ?>
+    <?php // $this->Html->link("Add User", ['action' => 'add']) ?>
+</div>
+</div>
 </div>

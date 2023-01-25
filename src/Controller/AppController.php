@@ -50,10 +50,14 @@ class AppController extends Controller
         $this->Authentication->allowUnauthenticated(['home', 'details' , 'category' ,'agents' ,'getProduct' ,'products' ,'contact']);
 
         $products = TableRegistry::get("Products")->getCompanyProducts();
-        $last3Articles = TableRegistry::get("Articles")->find()->limit(3)->order(['Articles.id'=>'DESC'])->All();
+        $last3Articles = TableRegistry::get("Articles")->find()->limit(3)->order(['rand()'])->toArray();
 
+
+        $categories = $this->Articles->Categories->find()->All();
+
+        
         $thisUser =  $this->Authentication->getIdentity()->id;
 
-        $this->set(compact('thisUser','products','last3Articles'));
+        $this->set(compact('thisUser','products','last3Articles','categories'));
     }
 }

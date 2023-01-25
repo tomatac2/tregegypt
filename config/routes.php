@@ -61,7 +61,8 @@ return static function (RouteBuilder $routes) {
         $builder->connect('/categories-list', ['controller' => 'Categories', 'action' => 'index']);
         $builder->connect('/articles-list', ['controller' => 'Articles', 'action' => 'index']);
         $builder->connect('/comments-list', ['controller' => 'Comments', 'action' => 'index']);
-        $builder->connect('/contacts-list', ['controller' => 'Contacts', 'action' => 'index']);
+        $builder->connect('/contacts-list', ['controller' => 'ContactUs', 'action' => 'index']);
+        $builder->connect('/order-list', ['controller' => 'ContactUs', 'action' => 'indexOrders']);
         $builder->connect('/agents-list', ['controller' => 'Agents', 'action' => 'index']);
         $builder->connect('/products-list', ['controller' => 'Products', 'action' => 'index']);
         $builder->connect('/team-list', ['controller' => 'Teams', 'action' => 'index']);
