@@ -140,4 +140,5 @@
     color: white !important;
   }
   .portfolio-info>h4{ color: white !important;}
+  .breadcrumbs ol li+li::before {padding-left: 10px;}
   </style>

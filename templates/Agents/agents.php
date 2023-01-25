@@ -1,22 +1,7 @@
 <main id="main">
 
-<!-- ======= Breadcrumbs ======= -->
-<div class="breadcrumbs">
-  <div class="container">
-
-    <div class="d-flex justify-content-between align-items-center">
-      <ol>
-        <li><a href="<?=URL?>">الرئيسية</a></li>
-        <li><a href="blog.html"><?=$article["category"]["name"]?></a></li>
-        <li><?=$article->title?></li>
-      </ol>
-    </div>
-
-  </div>
-</div><!-- End Breadcrumbs -->
-
 <!-- ======= Blog Details Section ======= -->
-<section id="blog" class="blog">
+<section id="blog" class="blog" style="margin-top:35px">
   <div class="container" data-aos="fade-up">
 
     <div class="row g-5">
@@ -29,11 +14,11 @@
         <article class="blog-details">
         <?php foreach($agents as $agent){    ?>
 
-          <div class="content" style="padding: 30px;box-shadow: 0 4px 16px rgba(var(--color-black-rgb), 0.1);margin: 50px 0 50px;">
+          <div class="content" style="padding: 15px;box-shadow: 0 4px 16px rgba(var(--color-black-rgb), 0.1);margin: 50px 0 50px;">
 
                 <ul>
                     <li><h3><?=$agent->name?></h3></li>
-                    <li><img style="max-width: 325px;max-height: 250px;"src="<?=URL.$agent["photo"]?>" alt="" class="img-fluid"></li>
+                    <li><img style="max-height: 250px;"src="<?=URL.$agent["photo"]?>" alt="" class="img-fluid"></li>
                     <li>إسم الموزع : <span><?=$agent["name"]?></span></li>
                     <li>المحافظة     : <span><?=$agent["area"]?></span></li>
                     <li>العنوان         : <span><?=$agent["address"]?></span></li>
@@ -55,4 +40,5 @@
 
 <style>
     .content>ul>li{list-style: none;margin: 15px 10px 5px 0px;}
+    ol,ul{ padding-right: 0;}
 </style>

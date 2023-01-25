@@ -7,8 +7,7 @@
     <div class="d-flex justify-content-between align-items-center">
       <ol>
         <li><a href="<?=URL?>">الرئيسية</a></li>
-        <li><a href="blog.html"><?=$article["category"]["name"]?></a></li>
-        <li><?=$article->title?></li>
+        <li><a href="<?=URL.'category'.'/'.$articles[0]["category"]["id"].'/'.str_replace(" ","-",$articles[0]["category"]["name"])?>"><?=$articles[0]["category"]["name"]?></a></li>
       </ol>
     </div>
 
@@ -51,7 +50,8 @@
         </article>
       </div>
 
-      <?php echo $this->element('website/files/shortcut/left_side')?>
+      <?php
+      echo $this->element('website/files/shortcut/left_side',["tags"=>$articles[0]["tags"]])?>
     </div>
 
   </div>

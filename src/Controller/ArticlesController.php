@@ -17,7 +17,7 @@ class ArticlesController extends AppController
 
     function category($id,$name=null){
         $this->viewBuilder()->setLayout('website');
-        $articles = $this->Articles->findByCategoryId($id)->contain(['Categories'])->All();
+        $articles = $this->Articles->findByCategoryId($id)->contain(['Categories'])->toArray();
         $this->set(compact('articles'));
     }
 

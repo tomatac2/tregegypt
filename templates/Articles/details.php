@@ -7,8 +7,8 @@
     <div class="d-flex justify-content-between align-items-center">
       <ol>
         <li><a href="<?=URL?>">الرئيسية</a></li>
-        <li><a href="blog.html"><?=$article["category"]["name"]?></a></li>
-        <li><?=$article->title?></li>
+        <li><a href="<?=URL.'category'.'/'.$article["category"]["id"].'/'.str_replace(" ","-",$article["category"]["name"])?>"><?=$article["category"]["name"]?></a></li>
+        <li><a href="<?=URL.'details'.'/'.$article["id"].'/'.str_replace(" ","-",$article["title"])?>"><?=$article["title"]?></a></li>
       </ol>
     </div>
 

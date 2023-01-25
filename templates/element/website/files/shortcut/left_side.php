@@ -38,8 +38,10 @@
   <div class="sidebar-item tags">
     <h3 class="sidebar-title">الكلمات المفتاحية</h3>
     <ul class="mt-3">
-        <?php foreach(explode(',',$article["tags"]) as $k=>$v){?>
-            <li><a href=""><?=$v?></a></li>
+        <?php
+        $tags ? $article["tags"] = $tags : "";
+        foreach(explode(',',$article["tags"]) as $k=>$v){?>
+            <li><a><?=$v?></a></li>
         <?php }?>
     
     </ul>

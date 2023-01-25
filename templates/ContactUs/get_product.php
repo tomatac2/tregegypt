@@ -17,7 +17,7 @@
             <input type="text" name="full_name" class="form-control" id="name" placeholder="الاسم الكامل (مطلوب)" required="">
             </div>
             <div class="col-md-6 form-group mt-3 mt-md-0">
-            <input type="email" class="form-control" name="email" id="email" placeholder="البريد الإلكتروني (مطلوب)" required="">
+            <input style="    text-align: right;" type="email" class="form-control" name="email" id="email" placeholder="البريد الإلكتروني (مطلوب)" required="">
             </div>
         </div>
         <div class="form-group mt-3">

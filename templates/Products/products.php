@@ -1,22 +1,8 @@
 <main id="main">
 
-<!-- ======= Breadcrumbs ======= -->
-<div class="breadcrumbs">
-  <div class="container">
-
-    <div class="d-flex justify-content-between align-items-center">
-      <ol>
-        <li><a href="<?=URL?>">الرئيسية</a></li>
-        <li><a href="blog.html"><?=$article["category"]["name"]?></a></li>
-        <li><?=$article->title?></li>
-      </ol>
-    </div>
-
-  </div>
-</div><!-- End Breadcrumbs -->
 
 <!-- ======= Blog Details Section ======= -->
-<section id="blog" class="blog">
+<section id="blog" class="blog" style="margin-top:35px;">
   <div class="container" data-aos="fade-up">
 
     <div class="row g-5">
