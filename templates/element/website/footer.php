@@ -20,7 +20,7 @@
             <h4>منتجات الشركة</h4>
             <ul>
               <?php foreach($products as $product):?>
-                <li><i class="bi bi-chevron-right"></i> <a href="<?=URL.'products/'.$product["id"].'/'.str_replace(' ','-',$product["name"])?>"><?=$product["name"]?></a></li>
+                <li><i class="bi bi-chevron-right"></i> <a href="<?=URL.'company-products/'.$product["id"].'/'.str_replace(' ','-',$product["name"])?>"><?=$product["name"]?></a></li>
               <?php endforeach;?>
             </ul>
           </div>

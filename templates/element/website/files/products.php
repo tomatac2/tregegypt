@@ -9,7 +9,7 @@
         <div class="icon">
             <i class="bi bi-activity"></i>
         </div>
-        <a href="<?=URL.'products/'.$v["id"].'/'.str_replace(" ","-",$v["name"])?>" class="stretched-link">
+        <a href="<?=URL.'company-products/'.$v["id"].'/'.str_replace(" ","-",$v["name"])?>" class="stretched-link">
             <h3><?=$v["name"]?></h3>
         </a>
         <p>كل ماتريد معرفته عن . <?=$v["name"]?></p>

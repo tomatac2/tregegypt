@@ -72,7 +72,7 @@ return static function (RouteBuilder $routes) {
         //website
         $builder->connect('/details/:id/:name', ['controller' => 'Articles', 'action' => 'details'])->setPass(['id','name']);
         $builder->connect('/category/:id/:name', ['controller' => 'Articles', 'action' => 'category'])->setPass(['id','name']);
-        $builder->connect('/products/:id/:name', ['controller' => 'Products', 'action' => 'products'])->setPass(['id','name']);
+        $builder->connect('/company-products/:id/:name', ['controller' => 'Products', 'action' => 'products'])->setPass(['id','name']);
         $builder->connect('/agents', ['controller' => 'Agents', 'action' => 'agents']);
         $builder->connect('/get-product', ['controller' => 'ContactUs', 'action' => 'getProduct']);
         $builder->connect('/contact', ['controller' => 'ContactUs', 'action' => 'contact']);

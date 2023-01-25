@@ -78,8 +78,12 @@
           <li><a class="nav-link scrollto" href="<?=URL.'category/'.$last3Articles[0]["category_id"].'/'.str_replace(" ","-",$last3Articles[0]["title"])?>">المدونة</a></li>
           <li class="dropdown"><a href="#"><span>منتجاتنا</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
-              <li><a href="<?=URL.'products/27/شبابيك-uPVC'?>"> شبابيك uPVC </a></li>
-              <li style="border:none"><a href="<?=URL.'products/30/أبواب-uPVC'?>"> أبواب uPVC</a></li>
+              <?php foreach($products as $k=>$v):
+                ?>
+                <li><a href="<?=URL.'company-products/'.$v["id"].'/'.str_replace(' ','-',$v["name"])?>"> <?=$v["name"]?> </a></li>
+              <?php
+                endforeach;
+                ?>
             </ul>
           </li>         
           <li><a class="nav-link scrollto" href="<?=URL.'contact'?>"> تواصل معنا</a></li>

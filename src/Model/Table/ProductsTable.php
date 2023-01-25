@@ -93,7 +93,7 @@ class ProductsTable extends Table
     /////////////////queries
 
     function getCompanyProducts(){
-        $q =  $this->find()->contain(['ProductPhotos'])->All();
+        $q =  $this->find()->contain(['ProductPhotos'])->limit(4)->All();
         return $q ; 
     }
 }

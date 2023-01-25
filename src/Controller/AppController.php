@@ -53,7 +53,7 @@ class AppController extends Controller
         $last3Articles = TableRegistry::get("Articles")->find()->limit(3)->order(['rand()'])->toArray();
 
 
-        $categories = $this->Articles->Categories->find()->All();
+        $categories =TableRegistry::get("Categories")->find()->All();
 
         
         $thisUser =  $this->Authentication->getIdentity()->id;
